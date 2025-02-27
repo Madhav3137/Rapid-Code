@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Google Font (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.5s ease;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            background: #f7f7f7;
+            transition: border 0.3s ease, transform 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #2575fc;
+            transform: scale(1.05);
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        #submit-btn {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #submit-btn:hover {
+            background-color: #6a11cb;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #submit-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animations for Form Elements */
+        .input-group input {
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .input-group:nth-child(1) input {
+            animation-delay: 0.2s;
+        }
+
+        .input-group:nth-child(2) input {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon Styling */
+        .fa-cloud-moon-rain {
+            color: #2575fc;
+            margin-left: 10px;
+            font-size: 20px;
+            animation: iconAnimation 1.5s infinite;
+        }
+
+        @keyframes iconAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+/* Placeholder Animation */
+@keyframes placeholderShimmer {
+    0% {
+        content: "";
+    }
+    25% {
+        content: ".";
+    }
+    50% {
+        content: "..";
+    }
+    75% {
+        content: "...";
+    }
+    100% {
+        content: "";
+    }
+}
+
+.input-group input::placeholder {
+    animation: placeholderShimmer 2s infinite;
+}
+
+.input-group input:focus::placeholder {
+    animation: none;
+    opacity: 0.5;
+}
+@keyframes placeholderShimmer {
+    0% {
+        content: "";
+        transform: translateX(-5px);
+    }
+    25% {
+        content: ".";
+        transform: translateX(0px);
+    }
+    50% {
+        content: "..";
+        transform: translateX(5px);
+    }
+    75% {
+        content: "...";
+        transform: translateX(0px);
+    }
+    100% {
+        content: "";
+        transform: translateX(-5px);
+    }
+}
+
+@keyframes placeholderPulse {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.input-group input::placeholder {
+    animation: 
+        placeholderShimmer 2s infinite,
+        placeholderPulse 1.5s infinite;
+}
+
+.input-group input:focus::placeholder {
+    animation: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+@media screen and (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .input-group input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    #submit-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-container {
+        width: 95%;
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group label {
+        font-size: 12px;
+    }
+
+    .input-group input {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    #submit-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .login-container {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .login-container {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>Login <i class="fa-solid fa-cloud-moon-rain"></i></h2>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password" name="password" required>
+            </div>
+
+            <div class="button-group">
+                <button id="submit-btn" type="submit">Login</button>
+            </div>
+            <div class="signup-link" style="text-align: center; margin-top: 20px;">
+                <p>Don't have an account? <a href="signup.html" style="color: #2575fc; text-decoration: none; font-weight: 500;">Sign up here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const submit_btn = document.getElementById("submit-btn");
+
+        function validateLogin(event) {
+            event.preventDefault();
+            
+            // Get stored users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Check if user exists and credentials match
+            const user = users.find(user => 
+                user.username === username.value && 
+                user.password === password.value
+            );
+
+            // Get stored credentials from signin.html localStorage
+            const storedEmail = localStorage.getItem('email');
+            const storedPassword = localStorage.getItem('password');
+
+            if (user) {
+                // Check if credentials match with signin.html storage
+                if (user.email === storedEmail && user.password === storedPassword) {
+                    // Store current user session
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    window.location.href = 'today.html';
+                } else {
+                    alert("Invalid credentials. Please check your email and password.");
+                }
+            } else {
+                alert("User not found. Please sign up if you don't have an account.");
+            }
+        }
+
+        submit_btn.addEventListener("click", validateLogin);
+        
+    </script>
+
+</body>
+</html>
